@@ -5,9 +5,9 @@ function useDarkMode() {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme')
       if (saved) return saved === 'dark'
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
+      return true
     }
-    return false
+    return true
   })
   useEffect(() => {
     const root = document.documentElement
@@ -38,11 +38,17 @@ function MoonIcon() {
 const skills = {
   Languages: ['Python', 'JavaScript', 'SQL', 'NoSQL'],
   Frontend: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3'],
-  'AI & Data': ['Machine Learning', 'Data Analysis', 'Automation', 'APIs'],
+  'AI & Video': ['AI Video Creation', 'Generative Media', 'Automation', 'APIs'],
   Tools: ['Git', 'VS Code', 'Figma', 'Postman'],
 }
 
 const projects = [
+  {
+    title: 'AI Video & Content Automation',
+    description:
+      'A creative workflow pipeline leveraging generative AI video tools and automated scripts to script, generate, and process high-impact visual media.',
+    tags: ['AI Video', 'Generative AI', 'Python', 'Automation'],
+  },
   {
     title: 'AI Automation Dashboard',
     description:
@@ -131,10 +137,10 @@ function Navbar() {
   const [dark, toggleDark] = useDarkMode()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#F7F6F3]/90 dark:bg-[#1a1a1d]/90 backdrop-blur-md border-b border-charcoal/[0.06] dark:border-white/[0.06]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#EDEEF2]/90 dark:bg-[#1a1a1d]/90 backdrop-blur-md border-b border-charcoal/[0.06] dark:border-white/[0.06]">
       <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
         <a href="#home" className="text-lg font-extrabold tracking-tight text-charcoal dark:text-white" aria-label="Home">
-          FA<span className="text-charcoal/40 dark:text-white/40">.</span>
+          FA<span className="text-charcoal/60 dark:text-white/40">.</span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -142,12 +148,12 @@ function Navbar() {
             <a
               key={l.label}
               href={l.href}
-              className="nav-link relative text-[13px] font-medium text-charcoal/45 dark:text-white/45 hover:text-charcoal dark:hover:text-white transition-colors duration-300"
+              className="nav-link relative text-[13px] font-medium text-charcoal/65 dark:text-white/45 hover:text-charcoal dark:hover:text-white transition-colors duration-300"
             >
               {l.label}
             </a>
           ))}
-          <button onClick={toggleDark} className="p-2 rounded-lg text-charcoal/50 dark:text-white/50 hover:text-charcoal dark:hover:text-white transition-colors" aria-label="Toggle dark mode">
+          <button onClick={toggleDark} className="p-2 rounded-lg text-charcoal/70 dark:text-white/50 hover:text-charcoal dark:hover:text-white transition-colors" aria-label="Toggle dark mode">
             {dark ? <SunIcon /> : <MoonIcon />}
           </button>
           <a
@@ -159,7 +165,7 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
-          <button onClick={toggleDark} className="p-2 text-charcoal/50 dark:text-white/50" aria-label="Toggle dark mode">
+          <button onClick={toggleDark} className="p-2 text-charcoal/70 dark:text-white/50" aria-label="Toggle dark mode">
             {dark ? <SunIcon /> : <MoonIcon />}
           </button>
           <button onClick={() => setOpen(!open)} className="text-charcoal dark:text-white p-1" aria-label="Menu">
@@ -169,13 +175,13 @@ function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden bg-[#F7F6F3] dark:bg-[#1a1a1d] border-t border-charcoal/[0.06] dark:border-white/[0.06] px-6 pb-5 pt-3">
+        <div className="md:hidden bg-[#EDEEF2] dark:bg-[#1a1a1d] border-t border-charcoal/[0.06] dark:border-white/[0.06] px-6 pb-5 pt-3">
           {navLinks.map((l) => (
             <a
               key={l.label}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block py-2.5 text-sm font-medium text-charcoal/55 dark:text-white/55 hover:text-charcoal dark:hover:text-white transition-colors"
+              className="block py-2.5 text-sm font-medium text-charcoal/75 dark:text-white/55 hover:text-charcoal dark:hover:text-white transition-colors"
             >
               {l.label}
             </a>
@@ -195,7 +201,7 @@ function Navbar() {
 
 /* ─── Hero ─── */
 
-const roles = ['AI Engineer', 'Full-Stack Developer', 'Python Expert', 'React Developer', 'Data Enthusiast']
+const roles = ['AI Engineer', 'AI Video Creator', 'Full-Stack Developer', 'Python Expert', 'React Developer', 'Data Enthusiast']
 
 function useRotatingText(items, interval = 2800) {
   const [index, setIndex] = useState(0)
@@ -231,7 +237,7 @@ function Hero() {
         <div className={`hero-content-left ${mounted ? 'hero-animate-in' : 'opacity-0'}`}>
           <div className="inline-flex items-center gap-2 rounded-full border border-charcoal/10 dark:border-white/10 bg-charcoal/[0.03] dark:bg-white/[0.05] px-3.5 py-1.5 mb-7">
             <span className="hero-pulse-dot" />
-            <span className="text-[11px] font-semibold text-charcoal/50 dark:text-white/50 tracking-wide uppercase">
+            <span className="text-[11px] font-semibold text-charcoal/70 dark:text-white/50 tracking-wide uppercase">
               Available for opportunities
             </span>
           </div>
@@ -241,15 +247,14 @@ function Hero() {
           </h1>
 
           <div className="mt-2 h-8 flex items-center">
-            <span className={`text-xl font-semibold bg-gradient-to-r from-charcoal/80 via-charcoal/60 to-charcoal/40 dark:from-white/80 dark:via-white/60 dark:to-white/40 bg-clip-text text-transparent transition-all duration-400 ${roleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
+            <span className={`text-xl font-semibold bg-gradient-to-r from-charcoal via-charcoal/80 to-charcoal/60 dark:from-white/80 dark:via-white/60 dark:to-white/40 bg-clip-text text-transparent transition-all duration-400 ${roleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
               {role}
             </span>
-            <span className="hero-cursor-blink ml-1 w-[2px] h-5 bg-charcoal/50 dark:bg-white/50 inline-block" />
+            <span className="hero-cursor-blink ml-1 w-[2px] h-5 bg-charcoal/70 dark:bg-white/50 inline-block" />
           </div>
 
-          <p className="mt-6 text-[15px] leading-7 text-charcoal/50 dark:text-white/50 max-w-md">
-            I design and build intelligent web systems that combine clean interfaces,
-            automation, and practical AI‑driven functionality.
+          <p className="mt-6 text-[15px] leading-7 text-charcoal/70 dark:text-white/50 max-w-md">
+            I design intelligent web systems, produce AI-driven video content, and build practical automated workflows.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
@@ -269,24 +274,24 @@ function Hero() {
 
           {/* Social links */}
           <div className="mt-8 flex items-center gap-4">
-            <span className="text-[11px] font-medium text-charcoal/30 dark:text-white/30 uppercase tracking-widest">Find me</span>
+            <span className="text-[11px] font-medium text-charcoal/50 dark:text-white/30 uppercase tracking-widest">Find me</span>
             <span className="w-8 h-[1px] bg-charcoal/10 dark:bg-white/10" />
-            <a href="https://github.com/FurqanAliii" target="_blank" rel="noopener noreferrer" className="text-charcoal/35 dark:text-white/35 hover:text-charcoal dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5"><GithubIcon /></a>
-            <a href="https://www.linkedin.com/in/furqan-ali-a01b37320/" target="_blank" rel="noopener noreferrer" className="text-charcoal/35 dark:text-white/35 hover:text-charcoal dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5"><LinkedInIcon /></a>
-            <a href="mailto:furqanautomation@gmail.com" className="text-charcoal/35 dark:text-white/35 hover:text-charcoal dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5"><MailIcon /></a>
+            <a href="https://github.com/FurqanAliii" target="_blank" rel="noopener noreferrer" className="text-charcoal/55 dark:text-white/35 hover:text-charcoal dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5"><GithubIcon /></a>
+            <a href="https://www.linkedin.com/in/furqan-ali-a01b37320/" target="_blank" rel="noopener noreferrer" className="text-charcoal/55 dark:text-white/35 hover:text-charcoal dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5"><LinkedInIcon /></a>
+            <a href="mailto:furqanautomation@gmail.com" className="text-charcoal/55 dark:text-white/35 hover:text-charcoal dark:hover:text-white transition-all duration-300 hover:-translate-y-0.5"><MailIcon /></a>
           </div>
         </div>
 
         {/* Right — profile photo with floating elements */}
         <div className={`flex justify-center lg:justify-end relative ${mounted ? 'hero-animate-in-right' : 'opacity-0'}`}>
           {/* Floating code snippet card */}
-          <div className="hero-float-card absolute -top-6 -left-4 lg:-left-10 bg-[#FAFAF8] dark:bg-[#222226] rounded-xl shadow-lg shadow-charcoal/[0.06] dark:shadow-black/25 border border-charcoal/[0.06] dark:border-white/[0.08] px-4 py-3 z-20 hidden sm:block">
+          <div className="hero-float-card absolute -top-6 -left-4 lg:-left-10 bg-[#F4F5F9] dark:bg-[#222226] rounded-xl shadow-lg shadow-charcoal/[0.06] dark:shadow-black/25 border border-charcoal/[0.06] dark:border-white/[0.08] px-4 py-3 z-20 hidden sm:block">
             <div className="flex items-center gap-1.5 mb-2">
               <span className="w-2 h-2 rounded-full bg-red-400/60" />
               <span className="w-2 h-2 rounded-full bg-yellow-400/60" />
               <span className="w-2 h-2 rounded-full bg-green-400/60" />
             </div>
-            <pre className="text-[10px] font-mono text-charcoal/50 dark:text-white/50 leading-relaxed">
+            <pre className="text-[10px] font-mono text-charcoal/70 dark:text-white/50 leading-relaxed">
 {`const engineer = {
   name: "Furqan",
   focus: "AI",
@@ -296,38 +301,38 @@ function Hero() {
           </div>
 
           {/* Floating tech badges */}
-          <div className="hero-float-badge-1 absolute -right-3 top-8 lg:-right-6 z-20 hidden sm:flex items-center gap-1.5 bg-[#FAFAF8] dark:bg-[#222226] rounded-full shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-3 py-1.5">
+          <div className="hero-float-badge-1 absolute -right-3 top-8 lg:-right-6 z-20 hidden sm:flex items-center gap-1.5 bg-[#F4F5F9] dark:bg-[#222226] rounded-full shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-3 py-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/70" />
-            <span className="text-[10px] font-bold text-charcoal/60 dark:text-white/60">Python</span>
+            <span className="text-[10px] font-bold text-charcoal/80 dark:text-white/60">Python</span>
           </div>
 
-          <div className="hero-float-badge-2 absolute -left-2 bottom-20 lg:-left-6 z-20 hidden sm:flex items-center gap-1.5 bg-[#FAFAF8] dark:bg-[#222226] rounded-full shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-3 py-1.5">
+          <div className="hero-float-badge-2 absolute -left-2 bottom-20 lg:-left-6 z-20 hidden sm:flex items-center gap-1.5 bg-[#F4F5F9] dark:bg-[#222226] rounded-full shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-3 py-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/70" />
-            <span className="text-[10px] font-bold text-charcoal/60 dark:text-white/60">React</span>
+            <span className="text-[10px] font-bold text-charcoal/80 dark:text-white/60">React</span>
           </div>
 
-          <div className="hero-float-badge-3 absolute right-4 bottom-4 lg:right-0 z-20 hidden sm:flex items-center gap-1.5 bg-[#FAFAF8] dark:bg-[#222226] rounded-full shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-3 py-1.5">
+          <div className="hero-float-badge-3 absolute right-4 bottom-4 lg:right-0 z-20 hidden sm:flex items-center gap-1.5 bg-[#F4F5F9] dark:bg-[#222226] rounded-full shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-3 py-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/70" />
-            <span className="text-[10px] font-bold text-charcoal/60 dark:text-white/60">AI / ML</span>
+            <span className="text-[10px] font-bold text-charcoal/80 dark:text-white/60">AI / ML</span>
           </div>
 
           <div className="profile-frame relative">
             {/* Corner brackets */}
-            <div className="absolute -top-3 -left-3 w-5 h-5 border-t-[2.5px] border-l-[2.5px] border-charcoal/25 dark:border-white/25 rounded-tl-md" />
-            <div className="absolute -top-3 -right-3 w-5 h-5 border-t-[2.5px] border-r-[2.5px] border-charcoal/25 dark:border-white/25 rounded-tr-md" />
-            <div className="absolute -bottom-3 -left-3 w-5 h-5 border-b-[2.5px] border-l-[2.5px] border-charcoal/25 dark:border-white/25 rounded-bl-md" />
-            <div className="absolute -bottom-3 -right-3 w-5 h-5 border-b-[2.5px] border-r-[2.5px] border-charcoal/25 dark:border-white/25 rounded-br-md" />
+            <div className="absolute -top-3 -left-3 w-5 h-5 border-t-[2.5px] border-l-[2.5px] border-charcoal/40 dark:border-white/25 rounded-tl-md" />
+            <div className="absolute -top-3 -right-3 w-5 h-5 border-t-[2.5px] border-r-[2.5px] border-charcoal/40 dark:border-white/25 rounded-tr-md" />
+            <div className="absolute -bottom-3 -left-3 w-5 h-5 border-b-[2.5px] border-l-[2.5px] border-charcoal/40 dark:border-white/25 rounded-bl-md" />
+            <div className="absolute -bottom-3 -right-3 w-5 h-5 border-b-[2.5px] border-r-[2.5px] border-charcoal/40 dark:border-white/25 rounded-br-md" />
 
             <img
               src="/RF.png"
-              alt="Furqan Ali — AI Engineer"
+              alt="Furqan Ali — AI Engineer & AI Video Creator"
               className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl object-cover object-top"
             />
 
             {/* Info card */}
-            <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-5 bg-[#FAFAF8] dark:bg-[#222226] rounded-lg shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-4 py-2.5">
+            <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-5 bg-[#F4F5F9] dark:bg-[#222226] rounded-lg shadow-md shadow-charcoal/[0.05] dark:shadow-black/20 border border-charcoal/[0.06] dark:border-white/[0.08] px-4 py-2.5">
               <p className="text-[11px] font-bold text-charcoal dark:text-white uppercase tracking-widest">AI Engineer</p>
-              <p className="text-[11px] text-charcoal/40 dark:text-white/40 mt-0.5">Python · React · JS</p>
+              <p className="text-[11px] text-charcoal/60 dark:text-white/40 mt-0.5">AI Engineer · AI Video Creator</p>
             </div>
           </div>
         </div>
@@ -335,7 +340,7 @@ function Hero() {
 
       {/* Scroll indicator */}
       <div className="hidden lg:flex flex-col items-center gap-2 absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <span className="text-[10px] font-medium text-charcoal/25 dark:text-white/25 uppercase tracking-[0.2em]">Scroll</span>
+        <span className="text-[10px] font-medium text-charcoal/45 dark:text-white/25 uppercase tracking-[0.2em]">Scroll</span>
         <div className="hero-scroll-line w-[1px] h-8 bg-charcoal/15 dark:bg-white/15 relative overflow-hidden">
           <div className="hero-scroll-dot" />
         </div>
@@ -344,12 +349,12 @@ function Hero() {
       {/* Tech stack marquee strip */}
       <div className="relative z-10 mt-16 lg:mt-20 border-t border-charcoal/[0.06] dark:border-white/[0.06] pt-6 pb-6 max-w-5xl mx-auto w-full">
         <div className="flex items-center gap-6">
-          <span className="text-[10px] font-bold text-charcoal/25 dark:text-white/25 uppercase tracking-[0.2em] shrink-0 relative z-10 bg-[#F7F6F3] dark:bg-[#1a1a1d] pr-2">Tech Stack</span>
+          <span className="text-[10px] font-bold text-charcoal/45 dark:text-white/25 uppercase tracking-[0.2em] shrink-0 relative z-10 bg-[#EDEEF2] dark:bg-[#1a1a1d] pr-2">Tech Stack</span>
           <span className="w-[1px] h-4 bg-charcoal/10 dark:bg-white/10 shrink-0 relative z-10" />
           <div className="overflow-hidden flex-1 min-w-0">
             <div className="hero-marquee-track flex gap-8">
-              {['Python', 'JavaScript', 'React.js', 'SQL', 'NoSQL', 'Machine Learning', 'Tailwind CSS', 'Git', 'Node.js', 'APIs', 'Python', 'JavaScript', 'React.js', 'SQL', 'NoSQL', 'Machine Learning', 'Tailwind CSS', 'Git', 'Node.js', 'APIs'].map((tech, i) => (
-                <span key={i} className="text-[12px] font-semibold text-charcoal/20 dark:text-white/20 whitespace-nowrap tracking-wide">
+              {['Python', 'AI Video', 'JavaScript', 'React.js', 'SQL', 'NoSQL', 'Machine Learning', 'Tailwind CSS', 'Git', 'Node.js', 'APIs', 'Python', 'AI Video', 'JavaScript', 'React.js', 'SQL', 'NoSQL', 'Machine Learning', 'Tailwind CSS', 'Git', 'Node.js', 'APIs'].map((tech, i) => (
+                <span key={i} className="text-[12px] font-semibold text-charcoal/40 dark:text-white/20 whitespace-nowrap tracking-wide">
                   {tech}
                 </span>
               ))}
@@ -365,7 +370,7 @@ function Hero() {
 
 function About() {
   return (
-    <section id="about" className="py-20 px-6 bg-[#F2F1EE] dark:bg-[#151517]">
+    <section id="about" className="py-20 px-6 bg-[#E4E5EB] dark:bg-[#151517]">
       <div className="max-w-5xl mx-auto">
         <SectionLabel text="About Me" />
         <h2 className="mt-3 text-3xl sm:text-[2rem] font-extrabold tracking-tight text-charcoal dark:text-white">
@@ -373,28 +378,26 @@ function About() {
         </h2>
 
         <div className="mt-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-14">
-          <div className="space-y-4 text-[15px] leading-7 text-charcoal/55 dark:text-white/55">
+          <div className="space-y-4 text-[15px] leading-7 text-charcoal/75 dark:text-white/55">
             <p>
-              I'm Furqan Ali, an AI Engineer with a deep interest in building systems that sit at
-              the intersection of intelligent automation and clean user experiences. My work involves
-              writing code that makes complex things feel simple — whether it's a data pipeline,
-              an interactive dashboard, or an AI‑powered workflow.
+              I'm Furqan Ali, an AI Engineer & AI Video Creator with a deep interest in building systems and visual media that sit at
+              the intersection of intelligent automation, generative AI, and clean user experiences. My work involves
+              writing code and producing AI video content that makes complex ideas feel engaging and effortless.
             </p>
             <p>
-              I work primarily with Python, React, JavaScript, SQL, and NoSQL technologies. I
-              believe good software should be practical first, and my focus is always on building
-              tools that solve real problems with minimal friction.
+              I work primarily with Python, React, AI Video generation tools, JavaScript, SQL, and NoSQL technologies. I
+              believe good software and media should be practical first, with a focus on building
+              tools and creative content that deliver real value.
             </p>
             <p>
-              When I'm not coding, I'm exploring new approaches in machine learning, reading
-              about system design, or refining my craft as a developer who cares equally about
-              functionality and form.
+              When I'm not coding or generating AI videos, I'm exploring new approaches in generative media, machine learning, reading
+              about system design, or refining my craft as a developer and creator.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <StatCard value="5+" label="Technologies" />
-            <StatCard value="AI" label="Focus Area" />
+            <StatCard value="AI & Video" label="Focus Area" />
             <StatCard value="∞" label="Curiosity" />
             <div className="rounded-xl bg-charcoal dark:bg-white p-5 flex flex-col justify-between">
               <p className="text-2xl font-extrabold text-white dark:text-charcoal">FA.</p>
@@ -411,9 +414,9 @@ function About() {
 
 function StatCard({ value, label }) {
   return (
-    <div className="rounded-xl border border-charcoal/[0.06] dark:border-white/[0.08] bg-[#FAFAF8] dark:bg-[#222226] p-5">
+    <div className="rounded-xl border border-charcoal/[0.06] dark:border-white/[0.08] bg-[#F4F5F9] dark:bg-[#222226] p-5">
       <p className="text-2xl font-extrabold text-charcoal dark:text-white">{value}</p>
-      <p className="text-[10px] font-medium text-charcoal/35 dark:text-white/35 uppercase tracking-widest mt-4">
+      <p className="text-[10px] font-medium text-charcoal/55 dark:text-white/35 uppercase tracking-widest mt-4">
         {label}
       </p>
     </div>
@@ -435,17 +438,17 @@ function Skills() {
           {Object.entries(skills).map(([category, items]) => (
             <div
               key={category}
-              className="rounded-xl border border-charcoal/[0.06] dark:border-white/[0.08] bg-[#FAFAF8] dark:bg-[#222226] p-5 hover:border-charcoal/20 dark:hover:border-white/20 transition-colors"
+              className="rounded-xl border border-charcoal/[0.06] dark:border-white/[0.08] bg-[#F4F5F9] dark:bg-[#222226] p-5 hover:border-charcoal/20 dark:hover:border-white/20 transition-colors"
             >
               <h3 className="text-[13px] font-bold text-charcoal dark:text-white mb-4 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-charcoal/30 dark:bg-white/30" />
+                <span className="w-1.5 h-1.5 rounded-full bg-charcoal/50 dark:bg-white/30" />
                 {category}
               </h3>
               <div className="flex flex-wrap gap-1.5">
                 {items.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-md bg-gray-50 dark:bg-white/[0.06] px-2.5 py-1.5 text-[12px] font-medium text-charcoal/60 dark:text-white/60 hover:bg-charcoal dark:hover:bg-white hover:text-white dark:hover:text-charcoal transition-colors cursor-default"
+                    className="rounded-md bg-[#EAEBF0] dark:bg-white/[0.06] px-2.5 py-1.5 text-[12px] font-medium text-charcoal/80 dark:text-white/60 hover:bg-charcoal dark:hover:bg-white hover:text-white dark:hover:text-charcoal transition-colors cursor-default"
                   >
                     {skill}
                   </span>
@@ -463,7 +466,7 @@ function Skills() {
 
 function Projects() {
   return (
-    <section id="projects" className="py-20 px-6 bg-[#F2F1EE] dark:bg-[#151517]">
+    <section id="projects" className="py-20 px-6 bg-[#E4E5EB] dark:bg-[#151517]">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-12">
           <div>
@@ -472,7 +475,7 @@ function Projects() {
               Selected work
             </h2>
           </div>
-          <p className="text-[13px] text-charcoal/35 dark:text-white/35 max-w-xs">
+          <p className="text-[13px] text-charcoal/55 dark:text-white/35 max-w-xs">
             Concept projects showcasing my approach to building clean, functional systems.
           </p>
         </div>
@@ -481,10 +484,10 @@ function Projects() {
           {projects.map((project, i) => (
             <article
               key={project.title}
-              className="hover-lift group rounded-xl border border-charcoal/[0.06] dark:border-white/[0.08] bg-[#FAFAF8] dark:bg-[#222226] p-6 cursor-default"
+              className="hover-lift group rounded-xl border border-charcoal/[0.06] dark:border-white/[0.08] bg-[#F4F5F9] dark:bg-[#222226] p-6 cursor-default"
             >
               <div className="flex items-center justify-between mb-5">
-                <span className="text-[11px] font-bold text-charcoal/30 dark:text-white/30 tracking-widest">
+                <span className="text-[11px] font-bold text-charcoal/50 dark:text-white/30 tracking-widest">
                   0{i + 1}
                 </span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity text-charcoal dark:text-white">
@@ -496,7 +499,7 @@ function Projects() {
                 {project.title}
               </h3>
 
-              <p className="mt-3 text-[13px] leading-[1.7] text-charcoal/45 dark:text-white/45">
+              <p className="mt-3 text-[13px] leading-[1.7] text-charcoal/65 dark:text-white/45">
                 {project.description}
               </p>
 
@@ -504,7 +507,7 @@ function Projects() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded bg-gray-50 dark:bg-white/[0.06] px-2 py-1 text-[11px] font-semibold text-charcoal/40 dark:text-white/40"
+                    className="rounded bg-[#EAEBF0] dark:bg-white/[0.06] px-2 py-1 text-[11px] font-semibold text-charcoal/60 dark:text-white/40"
                   >
                     {tag}
                   </span>
@@ -528,7 +531,7 @@ function Contact() {
         <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-charcoal dark:text-white">
           Let's build something intelligent.
         </h2>
-        <p className="mt-4 text-[15px] leading-7 text-charcoal/45 dark:text-white/45 max-w-md mx-auto">
+        <p className="mt-4 text-[15px] leading-7 text-charcoal/65 dark:text-white/45 max-w-md mx-auto">
           I'm open to freelance projects, collaborations, and full‑time opportunities. If you
           have an idea that aligns with my skills, I'd love to hear from you.
         </p>
@@ -568,10 +571,10 @@ function Footer() {
   return (
     <footer className="border-t border-charcoal/[0.06] dark:border-white/[0.06] py-7 px-6">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="text-[11px] text-charcoal/30 dark:text-white/30">
+        <p className="text-[11px] text-charcoal/50 dark:text-white/30">
           © {new Date().getFullYear()} Furqan Ali — All Rights Reserved
         </p>
-        <p className="text-[11px] font-medium text-charcoal/30 dark:text-white/30 hover:text-charcoal dark:hover:text-white transition-colors">
+        <p className="text-[11px] font-medium text-charcoal/50 dark:text-white/30 hover:text-charcoal dark:hover:text-white transition-colors">
           Developed and designed by Fa.
         </p>
       </div>
@@ -583,7 +586,7 @@ function Footer() {
 
 function SectionLabel({ text, centered }) {
   return (
-    <p className={`text-[11px] font-bold uppercase tracking-[0.18em] text-charcoal/45 dark:text-white/45 ${centered ? 'text-center' : ''}`}>
+    <p className={`text-[11px] font-bold uppercase tracking-[0.18em] text-charcoal/65 dark:text-white/45 ${centered ? 'text-center' : ''}`}>
       {text}
     </p>
   )
@@ -593,7 +596,7 @@ function SectionLabel({ text, centered }) {
 
 function App() {
   return (
-    <main className="min-h-screen bg-[#F7F6F3] dark:bg-[#1a1a1d] text-charcoal dark:text-white">
+    <main className="min-h-screen bg-[#EDEEF2] dark:bg-[#1a1a1d] text-charcoal dark:text-white">
       <Navbar />
       <Hero />
       <About />

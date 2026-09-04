@@ -24,9 +24,9 @@ html {
 
 body {
   min-width: 320px;
-  background: #F7F6F3;
+  background: #EDEEF2;
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  color: #3F4045;
+  color: #2B2D35;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 ::selection {
-  background: #3F4045;
+  background: #2B2D35;
   color: white;
 }
 
@@ -59,7 +59,7 @@ section[id] {
   bottom: -4px;
   width: 0;
   height: 2px;
-  background: #3F4045;
+  background: #2B2D35;
   border-radius: 1px;
   transition: width 0.3s ease;
 }
@@ -80,7 +80,7 @@ section[id] {
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(63, 64, 69, 0.08);
+  box-shadow: 0 12px 32px rgba(43, 45, 53, 0.1);
 }
 
 .dark .hover-lift:hover {
@@ -98,7 +98,7 @@ section[id] {
   position: absolute;
   inset: -12px;
   border-radius: 1.25rem;
-  border: 2px solid rgba(63, 64, 69, 0.12);
+  border: 2px solid rgba(43, 45, 53, 0.12);
   pointer-events: none;
 }
 
@@ -113,7 +113,7 @@ section[id] {
   right: -20px;
   width: 100px;
   height: 100px;
-  background: rgba(63, 64, 69, 0.05);
+  background: rgba(43, 45, 53, 0.05);
   border-radius: 50%;
   filter: blur(30px);
   pointer-events: none;
@@ -146,7 +146,7 @@ div {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3F404525;
+  background: #2B2D3525;
   border-radius: 3px;
 }
 
@@ -155,7 +155,7 @@ div {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3F404550;
+  background: #2B2D3550;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
@@ -172,7 +172,7 @@ div {
 .hero-bg-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(63, 64, 69, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(43, 45, 53, 0.06) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
   z-index: 0;
@@ -347,7 +347,7 @@ div {
   left: 0;
   width: 100%;
   height: 8px;
-  background: #3F4045;
+  background: #2B2D35;
   border-radius: 1px;
   animation: hero-scroll-move 2s ease-in-out infinite;
 }
